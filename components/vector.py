@@ -54,6 +54,22 @@ class Vector:
         else:
             raise ValueError(f"Must divide by type 'int' or 'float', not {type(item)}")
     
+    def __lt__(self, item:"Vector"):
+        if isinstance(item, Vector):
+            return self.x < item.x or self.y < item.y
+    
+    def __le__(self, item:"Vector"):
+        if isinstance(item, Vector):
+            return self.x <= item.x or self.y <= item.y
+        
+    def __gt__(self, item:"Vector"):
+        if isinstance(item, Vector):
+            return self.x > item.x or self.y > item.y
+    
+    def __ge__(self, item:"Vector"):
+        if isinstance(item, Vector):
+            return self.x >= item.x or self.y >= item.y
+    
     def to_tuple(self):
         return (self.x, self.y)
     
@@ -126,4 +142,8 @@ if __name__ == "__main__":
     print(v1.is_collinear(v2))
     print(v1.is_collinear(v3))
     print(v1.is_collinear(v4))
+    
+    print(v1 > v4)
+    print(v2 > v1)
+    print(v2 >= v1)
 
